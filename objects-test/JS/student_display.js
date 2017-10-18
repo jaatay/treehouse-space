@@ -17,7 +17,10 @@ var printPattern = function(){
 var searchPattern = function(){
   while (true) {
       var searchThis = prompt("Type a student name (John, Sally, Bill, Kool, or Candy) to get info. Type 'quit' to exit");
-      if (searchThis.toLowerCase() === "john") {
+
+      if (searchThis === null || searchThis.toLowerCase() === "quit") {
+        break;
+        } else if (searchThis.toLowerCase() === "john") {
           i = 0;
           printPattern();
         } else if (searchThis.toLowerCase() === "sally") {
@@ -32,28 +35,27 @@ var searchPattern = function(){
         } else if (searchThis.toLowerCase() === "candy") {
           i = 4;
           printPattern();
-        } else if (searchThis.toLowerCase() === "quit") {
-          break;
-          }
+        }
       }
       print(message);
   }
 
 var repeatPattern = function(){
   var askAgain = prompt("Type 'Yes' to kill/search another student, or 'No' to exit");
-  if (askAgain.toLowerCase() === "yes") {
-    searchPattern();
-    } else if (askAgain.toLowerCase() !== "yes") {
-    print(message);
-    extraLoop = false;
+
+    if (askAgain === null || askAgain.toLowerCase() !== "yes") {
+      print(message);
+      extraLoop = false;
+    } else if (askAgain.toLowerCase() === "yes") {
+      searchPattern();
     }
 }
-
+//change code above this line-------------
 searchPattern();
 
 while (extraLoop) {
     repeatPattern();
-    if (extraLoop === false){
+  if (extraLoop === false){
       break;
-    }
+  }
 }
